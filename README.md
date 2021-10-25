@@ -1,9 +1,9 @@
-# Spotify Case Study
+# NBA Case Study
 
 ## Run Command
 
 ```bash
-cd backend; go run main.go
+docker run -d -p 8080:8080 ilkerispir/nba
 ```
 
 Contanier push GCP repo 
@@ -15,6 +15,13 @@ Contanier Deploy Cloud Run
 ```
 gcloud run deploy nba-case --image gcr.io/ikerispir/nba-case --region europe-west3 --platform managed --allow-unauthenticated
 ```
+
+## Remove all containers & images
+```
+docker rm -vf $(docker ps -a -q)
+docker rmi -f $(docker images -a -q)
+```
+
 
 ## Backend
 
