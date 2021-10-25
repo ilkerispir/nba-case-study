@@ -6,6 +6,16 @@
 cd backend; go run main.go
 ```
 
+Contanier push GCP repo 
+```
+gcloud builds submit --tag gcr.io/ikerispir/nba-case
+```
+
+Contanier Deploy Cloud Run 
+```
+gcloud run deploy nba-case --image gcr.io/ikerispir/nba-case --region europe-west3 --platform managed --allow-unauthenticated
+```
+
 ## Backend
 
 * Lang: [Golang](https://golang.org/)
