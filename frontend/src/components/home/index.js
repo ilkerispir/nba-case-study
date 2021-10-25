@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Layout, Select, Space, Input, Button, Tag, notification, Image } from 'antd';
 import { Table } from "ant-table-extensions";
 import { SearchOutlined, FileExcelOutlined } from '@ant-design/icons';
@@ -6,6 +6,7 @@ import 'antd/dist/antd.css';
 import 'antd-button-color/dist/css/style.css';
 import ReactAudioPlayer from 'react-audio-player';
 import axios from 'axios';
+import teams from '../../config/teams';
 
 import 'antd/dist/antd.css';
 import 'react-phone-input-2/lib/style.css'
@@ -18,17 +19,25 @@ const AppHome = () => {
   const [genre, genreSet] = useState('');
   const [genresOptions, genresOptionsSet] = useState([]);
   const [artist, artistSet] = useState('');
-  
+
   useEffect(async () => {
     getList();
   }, []);
 
   async function getList() {
     try {
-      console.log("olley be");
-      var genres = [];
+      console.log("sdaasds");
+      setstate(
+        teams.map(row => ({
+          key: row.teamId,
+          team: row.teamName,
+          win: 0,
+          lose: 0,
+        }))
+      );
 
-      genresOptionsSet(genres);
+      console.log(teams);
+      var genres = [];
     } catch (err) {
       console.log(err.message);
     }
@@ -40,7 +49,7 @@ const AppHome = () => {
 
   async function search() {
     try {
-      if(!genre) return openNotification("warning", "Search Error!", "Please select the genre of the song.");
+      if (!genre) return openNotification("warning", "Search Error!", "Please select the genre of the song.");
 
       await getTracks(genre);
     } catch (err) {
@@ -48,10 +57,10 @@ const AppHome = () => {
     }
   }
 
-  const getTracks = async (genre) =>  {
+  const getTracks = async (genre) => {
     axios.post(`/api/top-tracks-by-artist`, {
       genre: genre,
-      }).then(
+    }).then(
       res => {
         artistSet(res.data[0].artists[0].name);
         setstate(
@@ -66,7 +75,7 @@ const AppHome = () => {
         );
       }
     );
-    }
+  }
 
   const openNotification = (type, title, message) => {
     notification[type]({
@@ -78,102 +87,52 @@ const AppHome = () => {
 
   const columns = [
     {
-      title: "Cover photo",
-      key: 'image',
-      dataIndex: 'image',
-      render: image => (
-        <>
-          <Image
-            width={200}
-            src={image}
-          />
-        </>
-      )
+      title: "Team",
+      dataIndex: "team"
     },
     {
-      title: "Title",
-      dataIndex: "title"
+      title: "Win",
+      dataIndex: "win"
     },
     {
-      title: "Artist",
-      dataIndex: "artist"
-    },
-    {
-        title: "Album",
-        dataIndex: "album"
-    },
-    {
-        title: 'Play',
-        key: 'play',
-        dataIndex: 'play',
-        render: play => (
-          <>
-            <ReactAudioPlayer
-              src={play}
-              controls
-            />
-          </>
-        )
+      title: "Lose",
+      dataIndex: "lose"
     }
   ];
 
   return (
     <Content>
       <div className="child-header" align="center">
-        <Space>
-          <Input 
-          placeholder="Artist"
-          disabled={true}
-          value={artist}
-          />
-
-          <Select
-            style={{ width: 200 }}
-            placeholder="Genres of music"
-            onChange={genresChange}
-            options={genresOptions}
-          >
-          </Select>
-
-          <Button 
-          type="primary"
-          onClick={search}
-          icon={<SearchOutlined />} 
-          size="medium"
-          >
-            Search
-          </Button>
-        </Space>
 
         <div className="child-body" align="center">
-        <Form form={form} component={false}>
-          <Table
-            bordered
-            dataSource={state}
-            columns={columns}
-            rowClassName="editable-row"
-            searchable
-            searchableProps={{
-              inputProps: {
-                placeholder: "Search this table...",
-                prefix: <SearchOutlined />,
-              },
-            }}
-            exportable
-            exportableProps={{ 
-              showColumnPicker: true, 
-              fileName: "song-list" ,
-              btnProps: {
-                type: "success",
-                icon: <FileExcelOutlined />,
-                children: <span>Export to CSV</span>,
-              },
-            }}
-          />
-        </Form>
+          <Form form={form} component={false}>
+            <Table
+              bordered
+              dataSource={state}
+              columns={columns}
+              rowClassName="editable-row"
+              searchable
+              searchableProps={{
+                inputProps: {
+                  placeholder: "Search this table...",
+                  prefix: <SearchOutlined />,
+                },
+              }}
+              exportable
+              exportableProps={{
+                showColumnPicker: true,
+                fileName: "song-list",
+                btnProps: {
+                  type: "success",
+                  icon: <FileExcelOutlined />,
+                  children: <span>Export to CSV</span>,
+                },
+              }}
+            />
+          </Form>
         </div>
       </div>
-    </Content> 
+    </Content>
   );
 };
 
