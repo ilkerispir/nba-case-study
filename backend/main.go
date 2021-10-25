@@ -1,16 +1,25 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+	
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	r := gin.Default()
 
+	
+	
 	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"success": true,
-			"message": "Hello World!",
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": "Ilker Ispir",
 		})
 	})
 
-	r.Run()
+	r.LoadHTMLGlob("template/*.tmpl")
+	r.Static("/static", "./static")
+
+
+	r.Run(":8080")
 }
