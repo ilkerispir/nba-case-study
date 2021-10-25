@@ -25,14 +25,9 @@ const AppHome = () => {
 
   async function getList() {
     try {
-      var list = await axios({
-        url: '/api/genres-of-music',
-        method: "POST"
-      });
-  
+      console.log("olley be");
       var genres = [];
-      for(let genre in list.data) genres.push({ label: genre, value: genre});
-  
+
       genresOptionsSet(genres);
     } catch (err) {
       console.log(err.message);
