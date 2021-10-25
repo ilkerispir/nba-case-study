@@ -12,7 +12,7 @@ import 'react-phone-input-2/lib/style.css'
 
 const { Content } = Layout;
 
-const AppSms = () => {
+const AppHome = () => {
   const [form] = Form.useForm();
   const [state, setstate] = useState([]);
   const [genre, genreSet] = useState('');
@@ -182,4 +182,4 @@ const AppSms = () => {
   );
 };
 
-export default AppSms;
+export default AppHome;

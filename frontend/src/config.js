@@ -1,1 +1,0 @@
-export const serverUrl = "https://tpro-pmi.callcenterstudio.com/api/?";
