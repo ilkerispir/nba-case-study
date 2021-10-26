@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"os"
 	"encoding/json"
-	"fmt"
 )
 
 type Teams struct {
@@ -14,11 +13,11 @@ type Teams struct {
 }
 
 type Team struct {
-    teamId int `json:"teamId"`
-    abbreviation string `json:"abbreviation"`
-    teamName string `json:"teamName"`
-    simpleName string `json:"simpleName"`
-	location string `json:"location"`
+    TeamId int `json:"teamId"`
+    Abbreviation string `json:"abbreviation"`
+    TeamName string `json:"teamName"`
+    SimpleName string `json:"simpleName"`
+	Location string `json:"location"`
 }
 
 func main() {
@@ -34,13 +33,16 @@ func main() {
 	})
 
 	r.POST("/teams", func(c *gin.Context) {
-		jsonFile, _ := os.Open("data/teams.json")
-		byteValue, _ := ioutil.ReadAll(jsonFile)
+		teamFile, _ := os.Open("data/teams.json")
+
+		defer teamFile.Close()
+
+		teamByte, _ := ioutil.ReadAll(teamFile)
 
 		var teams Teams
-		json.Unmarshal(byteValue, &teams)
 
-		fmt.Println(teams.Teams[0].teamName)
+		json.Unmarshal(teamByte, &teams)
+
 		c.JSON(http.StatusOK, teams.Teams)
 	})
 
