@@ -17,5 +17,17 @@ func main() {
 		})
 	})
 
+	r.POST("/teams", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong",
+		})
+	})
+
+	r.POST("/players", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong",
+		})
+	})
+
 	r.Run(":8080")
 }

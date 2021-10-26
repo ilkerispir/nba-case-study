@@ -1,6 +1,6 @@
-import Home from '../components/home';
 import { Tabs } from 'antd';
-import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';
+import Team from '../components/home/teams';
+import Player from '../components/home/players';
 
 const { TabPane } = Tabs;
 
@@ -8,14 +8,11 @@ function AppHome() {
     return (
         <div className="main block child-tab-bar">
             <Tabs defaultActiveKey="1">
-                <TabPane tab="Scorboard" key="1">
-                    <Home />
+                <TabPane tab="Teams" key="1">
+                    <Team />
                 </TabPane>
-                <TabPane tab="Live Matches" key="2">
-                    <Home />
-                </TabPane>
-                <TabPane tab="Statistics" key="3">
-                    <Home />
+                <TabPane tab="Players" key="2">
+                    <Player />
                 </TabPane>
             </Tabs>
         </div>

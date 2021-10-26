@@ -13,7 +13,7 @@ import 'react-phone-input-2/lib/style.css'
 
 const { Content } = Layout;
 
-const AppHome = () => {
+const Team = () => {
   const [form] = Form.useForm();
   const [state, setstate] = useState([]);
   const [genre, genreSet] = useState('');
@@ -26,7 +26,6 @@ const AppHome = () => {
 
   async function getList() {
     try {
-      console.log("sdaasds");
       setstate(
         teams.map(row => ({
           key: row.teamId,
@@ -36,54 +35,11 @@ const AppHome = () => {
         }))
       );
 
-      console.log(teams);
       var genres = [];
     } catch (err) {
       console.log(err.message);
     }
   }
-
-  function genresChange(value) {
-    genreSet(value);
-  }
-
-  async function search() {
-    try {
-      if (!genre) return openNotification("warning", "Search Error!", "Please select the genre of the song.");
-
-      await getTracks(genre);
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
-
-  const getTracks = async (genre) => {
-    axios.post(`/api/top-tracks-by-artist`, {
-      genre: genre,
-    }).then(
-      res => {
-        artistSet(res.data[0].artists[0].name);
-        setstate(
-          res.data.map(row => ({
-            key: row.id,
-            image: row.album.images[0].url,
-            title: row.name,
-            artist: row.artists[0].name,
-            album: row.album.name,
-            play: row.preview_url
-          }))
-        );
-      }
-    );
-  }
-
-  const openNotification = (type, title, message) => {
-    notification[type]({
-      message: title,
-      description: message,
-      placement: "topLeft"
-    });
-  };
 
   const columns = [
     {
@@ -136,4 +92,4 @@ const AppHome = () => {
   );
 };
 
-export default AppHome;
+export default Team;
