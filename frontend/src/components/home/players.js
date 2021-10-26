@@ -27,7 +27,7 @@ const AppHome = () => {
   async function getList() {
     try {
       var list = await axios({
-        url: 'http://localhost:8080/api/players',
+        url: '/api/players',
         method: "POST"
       });
 

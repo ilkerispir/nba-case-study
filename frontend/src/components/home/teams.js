@@ -27,7 +27,7 @@ const Team = () => {
   async function getList() {
     try {
       var list = await axios({
-        url: 'http://localhost:8080/api/teams',
+        url: '/api/teams',
         method: "POST"
       });
 
