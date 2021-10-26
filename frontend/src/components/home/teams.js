@@ -26,16 +26,19 @@ const Team = () => {
 
   async function getList() {
     try {
+      var list = await axios({
+        url: 'http://localhost:8080/api/teams',
+        method: "POST"
+      });
+
       setstate(
-        teams.map(row => ({
+        list.data.map(row => ({
           key: row.teamId,
           team: row.teamName,
           win: 0,
           lose: 0,
         }))
       );
-
-      var genres = [];
     } catch (err) {
       console.log(err.message);
     }
@@ -83,6 +86,9 @@ const Team = () => {
                   icon: <FileExcelOutlined />,
                   children: <span>Export to CSV</span>,
                 },
+              }}
+              pagination={{
+                pageSize: 6
               }}
             />
           </Form>

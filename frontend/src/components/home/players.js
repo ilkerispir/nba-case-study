@@ -26,8 +26,14 @@ const AppHome = () => {
 
   async function getList() {
     try {
+      var list = await axios({
+        url: 'http://localhost:8080/api/players',
+        method: "POST"
+      });
+
       setstate(
-        players.map(row => ({
+        list.data.map(row => ({
+          key: row.playerId,
           name: row.firstName,
           surname: row.lastName,
           ppg: 0,
@@ -35,8 +41,6 @@ const AppHome = () => {
           apg: 0
         }))
       );
-
-      var genres = [];
     } catch (err) {
       console.log(err.message);
     }
@@ -92,6 +96,9 @@ const AppHome = () => {
                   icon: <FileExcelOutlined />,
                   children: <span>Export to CSV</span>,
                 },
+              }}
+              pagination={{ 
+                pageSize: 6 
               }}
             />
           </Form>
