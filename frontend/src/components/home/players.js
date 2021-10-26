@@ -4,9 +4,7 @@ import { Table } from "ant-table-extensions";
 import { SearchOutlined, FileExcelOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import 'antd-button-color/dist/css/style.css';
-import ReactAudioPlayer from 'react-audio-player';
 import axios from 'axios';
-import players from '../../config/players';
 
 import 'antd/dist/antd.css';
 import 'react-phone-input-2/lib/style.css'
@@ -16,9 +14,6 @@ const { Content } = Layout;
 const AppHome = () => {
   const [form] = Form.useForm();
   const [state, setstate] = useState([]);
-  const [genre, genreSet] = useState('');
-  const [genresOptions, genresOptionsSet] = useState([]);
-  const [artist, artistSet] = useState('');
 
   useEffect(async () => {
     getList();

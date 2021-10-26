@@ -11,7 +11,7 @@ Contanier push GCP repo
 gcloud builds submit --tag gcr.io/ikerispir/nba-case
 ```
 
-Contanier Deploy Cloud Run 
+Contanier deploy Cloud Run 
 ```
 gcloud run deploy nba-case --image gcr.io/ikerispir/nba-case --region europe-west3 --platform managed --allow-unauthenticated
 ```
@@ -30,7 +30,7 @@ docker rmi -f $(docker images -a -q)
 ## Frontend
 
 * Lang: [Node v16](https://nodejs.org/en/)
-* UI: [React.js](https://reactjs.org/)
+* Framework: [React.js](https://reactjs.org/)
 * UI Kit: [Antd](https://ant.design/)
 * Modules: [Axios](https://www.npmjs.com/package/axios)
 
