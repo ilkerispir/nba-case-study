@@ -20,6 +20,17 @@ type Team struct {
 	Location string `json:"location"`
 }
 
+type Players struct {
+    Players []Player `json:"players"`
+}
+
+type Player struct {
+    FirstName string `json:"firstName"`
+    LastName string `json:"lastName"`
+    PlayerId int `json:"playerId"`
+    TeamId int `json:"teamId"`
+}
+
 func main() {
 	r := gin.Default()
 	
@@ -47,9 +58,17 @@ func main() {
 	})
 
 	r.POST("/players", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
+		playerFile, _ := os.Open("data/players.json")
+
+		defer playerFile.Close()
+
+		playerByte, _ := ioutil.ReadAll(playerFile)
+
+		var players Players
+
+		json.Unmarshal(playerByte, &players)
+
+		c.JSON(http.StatusOK, players.Players)
 	})
 
 	r.Run(":8080")
