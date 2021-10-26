@@ -36,6 +36,7 @@ func main() {
 	
 	r.LoadHTMLGlob("templates/*.html")
 	r.Static("/static", "./static")
+	r.Static("/data", "./data")
 	
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
@@ -43,7 +44,7 @@ func main() {
 		})
 	})
 
-	r.POST("api/teams", func(c *gin.Context) {
+	r.GET("api/teams", func(c *gin.Context) {
 		teamFile, _ := os.Open("data/teams.json")
 
 		defer teamFile.Close()
@@ -57,7 +58,7 @@ func main() {
 		c.JSON(http.StatusOK, teams.Teams)
 	})
 
-	r.POST("api/players", func(c *gin.Context) {
+	r.GET("api/players", func(c *gin.Context) {
 		playerFile, _ := os.Open("data/players.json")
 
 		defer playerFile.Close()

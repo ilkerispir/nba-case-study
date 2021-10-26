@@ -23,7 +23,7 @@ const Team = () => {
     try {
       var list = await axios({
         url: '/api/teams',
-        method: "POST"
+        method: "GET"
       });
 
       setstate(

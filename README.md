@@ -1,5 +1,22 @@
 # NBA Case Study
 
+## Preview Link
+* https://insider.ilkerispir.com/
+
+## API Reference
+
+#### Get all items
+
+```http
+  POST /api/teams
+```
+
+#### Get item
+
+```http
+  POST /api/players
+```
+
 ## Run Command
 
 ```bash
@@ -13,7 +30,7 @@ gcloud builds submit --tag gcr.io/ikerispir/nba-case
 
 Contanier deploy Cloud Run 
 ```
-gcloud run deploy nba-case --image gcr.io/ikerispir/nba-case --region europe-west3 --platform managed --allow-unauthenticated
+gcloud run deploy nba-case --image ikerispir/nba --region europe-west3 --platform managed --allow-unauthenticated
 ```
 
 ## Remove all containers & images

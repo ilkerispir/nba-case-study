@@ -23,7 +23,7 @@ const AppHome = () => {
     try {
       var list = await axios({
         url: '/api/players',
-        method: "POST"
+        method: "GET"
       });
 
       setstate(
