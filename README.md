@@ -3,24 +3,13 @@
 ## Preview Link
 * https://insider.ilkerispir.com/
 
-## API Reference
-
-#### Get all items
-
-```http
-  POST /api/teams
-```
-
-#### Get item
-
-```http
-  POST /api/players
-```
+## Hub Docker Link
+* https://hub.docker.com/repository/docker/ilkerispir/insider-case
 
 ## Run Command
 
 ```bash
-docker run -d -p 8080:8080 ilkerispir/nba
+docker run -d -p 8080:8080 ilkerispir/insider-case
 ```
 
 Contanier push GCP repo 
@@ -30,13 +19,7 @@ gcloud builds submit --tag gcr.io/ikerispir/nba-case
 
 Contanier deploy Cloud Run 
 ```
-gcloud run deploy nba-case --image ikerispir/nba --region europe-west3 --platform managed --allow-unauthenticated
-```
-
-## Remove all containers & images
-```
-docker rm -vf $(docker ps -a -q)
-docker rmi -f $(docker images -a -q)
+gcloud run deploy nba-case --image gcr.io/ikerispir/nba-case --region europe-west4 --platform managed --allow-unauthenticated
 ```
 
 ## Backend
@@ -51,8 +34,17 @@ docker rmi -f $(docker images -a -q)
 * UI Kit: [Antd](https://ant.design/)
 * Modules: [Axios](https://www.npmjs.com/package/axios)
 
+## Screenshots
+### Preview
+![Preview](images/preview.png)
+### GCP Cloud Run Console
+![Cloud Run](images/gcp-cloud-run.png)
 
-## React.js Error Watch Problem
-```bash
-fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-```
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ilkerispir.com/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ilkerispir/)
+
+#
+
+## Author
+- [@ilkerispir](https://www.github.com/ilkerispir)
