@@ -1,25 +1,19 @@
 {
-  "files": {
-    "main.css": "/static/css/main.2ee1494c.chunk.css",
-    "main.js": "/static/js/main.f49b14d3.chunk.js",
-    "main.js.map": "/static/js/main.f49b14d3.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.b9985b8d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.b9985b8d.js.map",
-    "static/css/2.e0a257bc.chunk.css": "/static/css/2.e0a257bc.chunk.css",
-    "static/js/2.4c8a6992.chunk.js": "/static/js/2.4c8a6992.chunk.js",
-    "static/js/2.4c8a6992.chunk.js.map": "/static/js/2.4c8a6992.chunk.js.map",
-    "static/js/3.9ff2895b.chunk.js": "/static/js/3.9ff2895b.chunk.js",
-    "static/js/3.9ff2895b.chunk.js.map": "/static/js/3.9ff2895b.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.e0a257bc.chunk.css.map": "/static/css/2.e0a257bc.chunk.css.map",
-    "static/css/main.2ee1494c.chunk.css.map": "/static/css/main.2ee1494c.chunk.css.map",
-    "static/js/2.4c8a6992.chunk.js.LICENSE.txt": "/static/js/2.4c8a6992.chunk.js.LICENSE.txt"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.b9985b8d.js",
-    "static/css/2.e0a257bc.chunk.css",
-    "static/js/2.4c8a6992.chunk.js",
-    "static/css/main.2ee1494c.chunk.css",
-    "static/js/main.f49b14d3.chunk.js"
-  ]
+  "short_name": "Ilker Ispir - Case Study",
+  "name": "Ilker Ispir - Case Study",
+  "icons": [
+    {
+      "src": "/static/images/favicon.webp",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/static/images/insider-logo.webp",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }

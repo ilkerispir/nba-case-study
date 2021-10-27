@@ -20,6 +20,8 @@ COPY static/ ./static/
 
 COPY templates/ ./templates/
 
+COPY data/ ./data/
+
 EXPOSE 8080
 
 CMD ["/server"]
