@@ -1,8 +1,5 @@
 # NBA Case Study
 
-## Preview Link
-* https://insider.ilkerispir.com/
-
 ## Hub Docker Link
 * https://hub.docker.com/repository/docker/ilkerispir/insider-case
 
